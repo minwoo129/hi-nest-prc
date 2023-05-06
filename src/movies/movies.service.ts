@@ -1,4 +1,7 @@
 import { Injectable } from '@nestjs/common';
+import { Movie } from './entities/Movie.entity';
 
 @Injectable()
-export class MoviesService {}
+export class MoviesService {
+  private movies: Movie[] = [];
+}
