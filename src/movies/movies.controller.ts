@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   Param,
+  Patch,
   Post,
   Put,
 } from '@nestjs/common';
@@ -30,8 +31,11 @@ export class MoviesController {
     return `This will delete movie with the id: ${id}`;
   }
 
-  @Put('/:id')
-  update(@Param('id') id: string) {
-    return `This will update movie with the id: ${id}`;
+  @Patch('/:id')
+  update(@Param('id') id: string, @Body() updateData) {
+    return {
+      updatedMovie: id,
+      ...updateData,
+    };
   }
 }
