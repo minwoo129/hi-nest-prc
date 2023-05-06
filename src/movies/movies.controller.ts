@@ -7,6 +7,7 @@ import {
   Patch,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 
 @Controller('movies')
@@ -14,6 +15,11 @@ export class MoviesController {
   @Get()
   getAll() {
     return 'This will return all movies';
+  }
+
+  @Get('search')
+  search(@Query('year') searchingYear: string) {
+    return `We are searching for a movie made after ${searchingYear}`;
   }
 
   @Get('/:id')
